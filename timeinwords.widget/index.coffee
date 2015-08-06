@@ -42,7 +42,7 @@ style =
 
 
 # Get the current hour as word.
-command: "ruby timeinwords.widget/hours.rb"
+command: "echo hello"
 
 # Lower the frequency for more accuracy.
 refreshFrequency: (1000 * 3) # (1000 * n) seconds
@@ -57,10 +57,34 @@ render: (o) -> """
 
 
 update: (output, dom) ->
-	$(dom).find("#hours").html(output)
-	@run("ruby timeinwords.widget/minutes.rb", (err, output) ->
-			$(dom).find('#minutes').html(output)
-	)
+	hours = [null, "one", "two", "three", "four", "five", "six", "seven",
+		"eight", "nine", "ten", "eleven", "twelve"]
+	ones = [null, "one", "two", "three", "four", "five", "six", "seven",
+		"eight", "nine"]
+	teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+		"sixteen", "seventeen", "eighteen", "nineteen"]
+	tens = [null, null, "twenty", "thirty", "forty", "fifty"]
+
+	date   = new Date()
+	minute = date.getMinutes()
+	hour   = date.getHours()
+	hour   = hour % 12
+	hour   = 12 if hour == 0
+
+	hour_str = hours[hour]
+	if minute == 0
+		minute_str = "o'clock"
+	else if minute >= 1 && minute <= 9
+		minute_str = "o'#{ones[minute]}"
+	else if minute >= 10 && minute <= 19
+		minute_str = teens[minute - 10]
+	else
+		minute_str = tens[minute.toString()[0..0]]
+		if minute.toString()[1..1] != "0"
+			minute_str += ones[minute.toString()[1..1]]
+
+	$(dom).find("#hours").html(hour_str)
+	$(dom).find("#minutes").html(minute_str)
 
 
 style: """
