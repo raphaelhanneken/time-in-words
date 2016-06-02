@@ -1,7 +1,6 @@
 #
 # Time in Words widget for Übersicht
-# Raphael Hanneken
-# behoernchen.github.io
+# Raphael H.
 #
 
 
@@ -88,20 +87,20 @@ update: (output, dom) ->
 
 
 style: """
-  top: #{@style.position.top}
-  bottom: #{@style.position.bottom}
-  right: #{@style.position.right}
-  left: #{@style.position.left}
-  width: #{@style.width}
-  font-family: #{@style.font}
-  color: #{@style.font_color}
-  font-weight: #{@style.font_weight}
-  text-align: #{@style.text_align}
-  text-transform: #{@style.text_transform}
-  font-size: #{@style.font_size}
-  letter-spacing: #{@style.letter_spacing}
+  top: #{style.position.top}
+  bottom: #{style.position.bottom}
+  right: #{style.position.right}
+  left: #{style.position.left}
+  width: #{style.width}
+  font-family: #{style.font}
+  color: #{style.font_color}
+  font-weight: #{style.font_weight}
+  text-align: #{style.text_align}
+  text-transform: #{style.text_transform}
+  font-size: #{style.font_size}
+  letter-spacing: #{style.letter_spacing}
   font-smoothing: antialiased
-  text-shadow: #{@style.text_shadow.x_offset} #{@style.text_shadow.y_offset} #{@style.text_shadow.blur} #{@style.text_shadow.color}
-  line-height: #{@style.line_height}
+  text-shadow: #{style.text_shadow.x_offset} #{style.text_shadow.y_offset} #{style.text_shadow.blur} #{style.text_shadow.color}
+  line-height: #{style.line_height}
 
 """
